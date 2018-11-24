@@ -24,12 +24,12 @@ namespace Trinity.Application.Services
         public MusicDisplayingModel Create(MusicInsertingModel model)
         {
             Validator.Validate(model);
-            Music entity = (Music)model;
+            Music entity = model;
             Repository.Create(entity);
             Repository.SaveDbChanges();
             if (Exists(entity))
             {
-                return (MusicDisplayingModel)entity;
+                return entity;
             }
             throw new InternalServerException("An error ocurred while saving the model");
         }
@@ -61,7 +61,7 @@ namespace Trinity.Application.Services
             {
                 throw new EntityNotFoundException("Entity not found");
             }
-            return (MusicDisplayingModel)entity;
+            return entity;
         }
 
         public MusicDisplayingModel Update(MusicUpdatingModel model)
@@ -72,9 +72,9 @@ namespace Trinity.Application.Services
                 throw new EntityNotFoundException("Entity not found");
             }
             Validator.Validate(model);
-            Repository.Update(entity.FromValue((Music)model));
+            Repository.Update(entity.FromValue(model));
             Repository.SaveDbChanges();
-            return (MusicDisplayingModel)entity;
+            return entity;
         }
     }
 }

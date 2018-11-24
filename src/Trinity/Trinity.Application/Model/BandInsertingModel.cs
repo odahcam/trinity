@@ -9,7 +9,7 @@ namespace Trinity.Application.Model
 
         public short FoundationYear { get; set; }
 
-        public static explicit operator Band(BandInsertingModel model)
+        public static implicit operator Band(BandInsertingModel model)
         {
             return new Band
             {

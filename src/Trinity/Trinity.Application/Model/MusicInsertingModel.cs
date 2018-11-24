@@ -13,7 +13,7 @@ namespace Trinity.Application.Model
 
         public long BandId { get; set; }
 
-        public static explicit operator Music(MusicInsertingModel model)
+        public static implicit operator Music(MusicInsertingModel model)
         {
             return new Music
             {

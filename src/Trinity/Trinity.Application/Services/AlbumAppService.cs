@@ -24,12 +24,12 @@ namespace Trinity.Application.Services
         public AlbumDisplayingModel Create(AlbumInsertingModel model)
         {
             Validator.Validate(model);
-            Album entity = (Album)model;
+            Album entity = model;
             Repository.Create(entity);
             Repository.SaveDbChanges();
             if (Exists(entity))
             {
-                return (AlbumDisplayingModel)entity;
+                return entity;
             }
             throw new InternalServerException("An error ocurred while saving the model");
         }
@@ -61,7 +61,7 @@ namespace Trinity.Application.Services
             {
                 throw new EntityNotFoundException("Entity not found");
             }
-            return (AlbumDisplayingModel)entity;
+            return entity;
         }
 
         public AlbumDisplayingModel Update(AlbumUpdatingModel model)
@@ -72,9 +72,9 @@ namespace Trinity.Application.Services
                 throw new EntityNotFoundException("Entity not found");
             }
             Validator.Validate(model);
-            Repository.Update(entity.FromValue((Album)model));
+            Repository.Update(entity.FromValue(model));
             Repository.SaveDbChanges();
-            return (AlbumDisplayingModel)entity;
+            return entity;
         }
     }
 }

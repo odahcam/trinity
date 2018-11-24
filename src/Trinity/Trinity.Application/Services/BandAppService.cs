@@ -24,12 +24,12 @@ namespace Trinity.Application.Services
         public BandDisplayingModel Create(BandInsertingModel model)
         {
             Validator.Validate(model);
-            Band entity = (Band)model;
+            Band entity = model;
             Repository.Create(entity);
             Repository.SaveDbChanges();
             if (Exists(entity))
             {
-                return (BandDisplayingModel)entity;
+                return entity;
             }
             throw new InternalServerException("An error ocurred while saving the model");
         }
@@ -61,7 +61,7 @@ namespace Trinity.Application.Services
             {
                 throw new EntityNotFoundException("Entity not found");
             }
-            return (BandDisplayingModel)entity;
+            return entity;
         }
 
         public BandDisplayingModel Update(BandUpdatingModel model)
@@ -72,9 +72,9 @@ namespace Trinity.Application.Services
                 throw new EntityNotFoundException("Entity not found");
             }
             Validator.Validate(model);
-            Repository.Update(entity.FromValue((Band)model));
+            Repository.Update(entity.FromValue(model));
             Repository.SaveDbChanges();
-            return (BandDisplayingModel)entity;
+            return entity;
         }
     }
 }

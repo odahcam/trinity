@@ -15,7 +15,7 @@ namespace Trinity.Application.Model
 
         public AlbumDisplayingModel Album { get; set; }
 
-        public static explicit operator MusicDisplayingModel(Music entity)
+        public static implicit operator MusicDisplayingModel(Music entity)
         {
             return new MusicDisplayingModel
             {

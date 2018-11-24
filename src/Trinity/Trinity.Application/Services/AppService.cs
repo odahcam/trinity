@@ -4,7 +4,7 @@ using Trinity.Domain.Repositories;
 
 namespace Trinity.Application.Services
 {
-    public class AppService<T> : IAppService<T> where T : Entity
+    public abstract class AppService<T> : IAppService<T> where T : Entity
     {
         protected readonly IRepository<T> Repository;
 

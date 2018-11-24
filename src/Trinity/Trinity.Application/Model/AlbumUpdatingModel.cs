@@ -8,7 +8,7 @@ namespace Trinity.Application.Model
         public long Id { get; set; }
         public string Title { get; set; }
 
-        public static explicit operator Album(AlbumUpdatingModel model)
+        public static implicit operator Album(AlbumUpdatingModel model)
         {
             return new Album
             {

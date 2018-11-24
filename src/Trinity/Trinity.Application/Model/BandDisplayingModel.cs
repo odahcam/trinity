@@ -10,7 +10,7 @@ namespace Trinity.Application.Model
 
         public short FoundationYear { get; set; }
 
-        public static explicit operator BandDisplayingModel(Band entity)
+        public static implicit operator BandDisplayingModel(Band entity)
         {
             return new BandDisplayingModel
             {
