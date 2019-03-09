@@ -50,13 +50,13 @@ namespace Trinity.Application.Services
 
         public List<MusicDisplayingModel> GetAll()
         {
-            return Repository.GetAll().ToList()
+            return Repository.List().ToList()
                 .Select(m => (MusicDisplayingModel)m).ToList();
         }
 
         public MusicDisplayingModel Get(long id)
         {
-            Music entity = Repository.Get(id);
+            Music entity = Repository.Find(id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");
@@ -66,7 +66,7 @@ namespace Trinity.Application.Services
 
         public MusicDisplayingModel Update(MusicUpdatingModel model)
         {
-            Music entity = Repository.Get(model.Id);
+            Music entity = Repository.Find(model.Id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");

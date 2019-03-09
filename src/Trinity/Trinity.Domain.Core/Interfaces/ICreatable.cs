@@ -2,8 +2,9 @@
 
 namespace Trinity.Domain.Core.Interfaces
 {
-    public interface ICreatable<T> where T : Entity
+    public interface ICreatable<in TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
-        void Create(T model);
+        void Create(TEntity entity);
     }
 }
+

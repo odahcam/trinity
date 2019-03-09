@@ -15,7 +15,7 @@ namespace Trinity.Application.Services
 
         public bool Exists(long id)
         {
-            T entity = Repository.Get(id);
+            T entity = Repository.Find(id);
             return entity != null && entity.Id > 0;
         }
 

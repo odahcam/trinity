@@ -50,13 +50,13 @@ namespace Trinity.Application.Services
 
         public List<BandDisplayingModel> GetAll()
         {
-            return Repository.GetAll().ToList()
+            return Repository.List().ToList()
                 .Select(m => (BandDisplayingModel)m).ToList();
         }
 
         public BandDisplayingModel Get(long id)
         {
-            Band entity = Repository.Get(id);
+            Band entity = Repository.Find(id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");
@@ -66,7 +66,7 @@ namespace Trinity.Application.Services
 
         public BandDisplayingModel Update(BandUpdatingModel model)
         {
-            Band entity = Repository.Get(model.Id);
+            Band entity = Repository.Find(model.Id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");

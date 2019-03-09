@@ -2,8 +2,8 @@
 
 namespace Trinity.Domain.Core.Interfaces
 {
-    public interface IUpdatable<T> where T : Entity
+    public interface IUpdatable<TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
-        void Update(T model);
+        void Update(TEntity entity);
     }
 }

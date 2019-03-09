@@ -2,8 +2,10 @@
 
 namespace Trinity.Domain.Core.Interfaces
 {
-    public interface IDeletable<T> where T : Entity
+    public interface IDeletable<TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
-        void Delete(long id);
+        void Delete(TKey id);
+        
+        void Delete(TEntity entity);
     }
 }
