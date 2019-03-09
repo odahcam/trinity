@@ -50,13 +50,13 @@ namespace Trinity.Application.Services
 
         public List<AlbumDisplayingModel> GetAll()
         {
-            return Repository.GetAll().ToList()
+            return Repository.List().ToList()
                 .Select(m => (AlbumDisplayingModel)m).ToList();
         }
 
         public AlbumDisplayingModel Get(long id)
         {
-            Album entity = Repository.Get(id);
+            Album entity = Repository.Find(id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");
@@ -66,7 +66,7 @@ namespace Trinity.Application.Services
 
         public AlbumDisplayingModel Update(AlbumUpdatingModel model)
         {
-            Album entity = Repository.Get(model.Id);
+            Album entity = Repository.Find(model.Id);
             if (!Exists(entity))
             {
                 throw new EntityNotFoundException("Entity not found");

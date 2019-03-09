@@ -2,7 +2,7 @@
 
 namespace Trinity.Domain.Core.Model
 {
-    public class Entity
+    public class Entity : IEntity
     {
         public long Id { get; set; }
 

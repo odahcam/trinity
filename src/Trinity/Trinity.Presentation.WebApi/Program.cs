@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore;
+﻿using Trinity.Infra.CrossCutting.Migrations;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Trinity.Presentation.WebApi
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            SeedData.InitializeHost(host);
+
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)

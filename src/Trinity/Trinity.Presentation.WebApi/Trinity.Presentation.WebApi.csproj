@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Trinity.Infra.CrossCutting.IoC\Trinity.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\Trinity.Infra.CrossCutting.Swagger\Trinity.Infra.CrossCutting.Swagger.csproj" />
+    <ProjectReference Include="..\Trinity.Infra.CrossCutting.Migrations\Trinity.Infra.CrossCutting.Migrations.csproj" />
   </ItemGroup>
 
 </Project>

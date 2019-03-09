@@ -4,7 +4,7 @@ using Trinity.Infra.Data.Mappings;
 
 namespace Trinity.Infra.Data.Context
 {
-    public class TrinityContext : DbContext
+    public class TrinityContext : DbContext, IDbContext
     {
         public DbSet<Music> Musics { get; set; }
         public DbSet<Album> Albums { get; set; }
