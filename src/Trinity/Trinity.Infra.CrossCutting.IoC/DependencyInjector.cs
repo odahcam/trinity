@@ -12,6 +12,9 @@ namespace Trinity.Infra.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            // use as Lazy<TService>
+            services.AddTransient(typeof(Lazy<>), typeof(Lazier<>));
+            
             //Infra.Data
             services.AddScoped<IMusicRepository, MusicRepository>();
             services.AddScoped<IAlbumRepository, AlbumRepository>();
