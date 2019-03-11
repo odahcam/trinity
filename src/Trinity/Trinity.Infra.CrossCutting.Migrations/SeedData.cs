@@ -13,10 +13,10 @@ namespace Trinity.Infra.CrossCutting.Migrations
         {
             var context = services.GetService<TrinityContext>();
 
-            if (!context.Database.EnsureCreated())
-            {
-                context.Database.Migrate();
-            }
+            // NOTE: if you just want to ensure your DataBase reflects your 
+            // DbContext, you can use: context.Database.EnsureCreated(), otherwise
+            // you shall use the following to run migrations.
+            context.Database.Migrate();
         }
 
         public static void InitializeHost(IWebHost host)
